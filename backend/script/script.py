@@ -1,11 +1,21 @@
 import sys
+import os
 import json
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import re
 import requests
 
-driver = webdriver.Chrome(r"D:\flutter_app_folder\iphone_rates_tracker\backend\script\chromedriver.exe", port=9515)
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
+
+# remove the top 6 lines when doing local testing and add the below line. for deployment keep this option.
+# driver = webdriver.Chrome(r"D:\flutter_app_folder\iphone_rates_tracker\backend\script\chromedriver.exe", port=9515)
 driver.get('https://www.flipkart.com/search?q=iphone')
 
 soup = BeautifulSoup(driver.page_source, 'html.parser')
