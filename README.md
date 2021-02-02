@@ -1,6 +1,9 @@
 # Iphone and Iphone Gadgets Rate Tracker
 
-A new Flutter project.
+A Web-Scrapping Project that gets the price and discount from Flipkart.
 
-## Getting Started
-Will be updated!
+## Tools Used
+
+- Flutter of Frontend
+- Node js Server
+- Python script for web scrapping.
